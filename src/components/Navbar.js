@@ -44,11 +44,11 @@ Navbar.propTypes = {
     about : PropTypes.string,
     search : PropTypes.string,
 };
- 
-// Navbar.defaultProps = {
-//     title: 'set Title name',
-//     home: 'set Home',
-//     links: 'set links',
-//     about: 'set about',
-//     search: 'set search',
-// }
+
+Navbar.defaultProps = {
+    title: 'set Title name',
+    home: 'set Home',
+    links: 'set links',
+    about: 'set about',
+    search: 'set search',
+}
