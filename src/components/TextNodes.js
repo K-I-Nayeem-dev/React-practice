@@ -16,10 +16,12 @@ function TextNodes(props) {
 
     const handelOnClick = ()=>{        
         setText(text.toUpperCase());
+        props.showAlert('Text Covert to UpperCase', 'success');
     }
 
     const handelLoClick = ()=>{        
         setText(text.toLowerCase());
+        props.showAlert('Text Covert to LowerCase', 'success');
     }
 
     const handelOnChange = (event)=>{
@@ -28,6 +30,7 @@ function TextNodes(props) {
 
     const clearTextArea = ()=>{
         setText('');
+        props.showAlert('Clear Text Area', 'success');
     }
     // const boldText = ()=>{
     //    let button = document.querySelectorAll('textarea')[0];
@@ -39,6 +42,7 @@ function TextNodes(props) {
         let color = event.target.value;
         // let textarea = document.querySelectorAll('textarea')[0].value;
         setText(color);
+        props.showAlert('Light Mode Enable', 'success');
     }
 
     const handleCopy = (event)=>{
@@ -46,11 +50,13 @@ function TextNodes(props) {
         // let textarea = document.querySelectorAll('textarea')[0].value;
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert('Copy Clipboard', 'success');
     }
 
     const removeSpace = ()=>{
-        let newText = text.split(/[ ]+/);
+        let newText = text.split(/[ ]+/); 
         setText(newText.join(' '));
+        props.showAlert('Remove Space From', 'success');
     }
 
     return (
@@ -60,7 +66,7 @@ function TextNodes(props) {
                     <div className="mb-3">
                         <h1 className='mb-3' style={{ color: props.mode === 'light'? 'black': 'white' }}>{props.heading}</h1>
                         <div className='d-flex justify-content-center'>
-                            <textarea style={{ color: props.mode === 'light'? 'black': 'white', backgroundColor: props.mode === 'light'? 'white': 'black'}} type="text" onChange={handelOnChange} value={text} rows='8' id='myBox' className="form-control" aria-describedby="emailHelp"/>
+                            <textarea  style={{ color: props.mode === 'light'? 'black': 'white', backgroundColor: props.mode === 'light'? 'white': 'black'}} type="text" onChange={handelOnChange} value={text} rows='8' id='myBox' className="form-control" aria-describedby="emailHelp"/>
                             <textarea style={{ color: props.mode === 'light'? 'black': 'white', backgroundColor: props.mode === 'light'? 'white': 'black' }} type="text" onChange={Counting} value={count} rows='8' className="form-control"/>
                         </div>
                     </div>
@@ -83,7 +89,7 @@ function TextNodes(props) {
             <div className="row d-flex justify-content-center">
                 <div className="col-lg-10">
                     <h1 style={{ color: props.mode === 'light'? 'black': 'white' }}>Your Text Summery</h1>
-                    <p style={{ color: props.mode === 'light'? 'black': 'white' }}>{text.split(' ').length} Words {text.length} Total Lenght To Read {0.008 * text.split(" ").length} Minute</p>
+                    <p style={{ color: props.mode === 'light'? 'black': 'white' }}>{(text.split(' ').length)-1} Words {text.length} Total Lenght To Read {0.008 * text.split(" ").length} Minute</p>
                     <h2 style={{ color: props.mode === 'light'? 'black': 'white' }}>Preview</h2>
                     <p style={{ color: props.mode === 'light'? 'black': 'white' }}>{text.length > 0 ? text : 'Enter Some Value to Preview'}</p>
                 </div>
